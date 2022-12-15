@@ -54,7 +54,57 @@ class BinarySearchTree {
    * Returns the tree instance. Uses iteration. */
 
   insert(val) {
+    // console.log(this, "<-------- this")
+    let current = this.root;
+    let newNode = new Node(val)
 
+    //If greater than root
+    // if(newNode.val > this.root.val){
+    //   newNode.left = this.root;
+    //   newNode.right = this.root.right;
+    //   this.root = newNode
+    //   console.log(this.root, "<-------- new root. New Node is greater than")
+    // }
+    if(!current) this.root = newNode;
+
+    while(current){
+      //if current.val is less than newNode.val,
+      
+
+      console.log(current, "<================ before current")
+      let check = newNode.val < current.val;
+      let result = (check) 
+                ? current.left
+                : current.right;
+      console.log(result, "<=============== result")
+      if(result === null) {
+        if(check) current.left = newNode;
+        else current.right = newNode;
+      }
+      current = result;
+      console.log(current, "<================ current change")
+    }
+
+    current = newNode;
+    console.log(current, "<================ after current")
+    return newNode
+    // if(!current.left){ 
+    //   current.left = newNode;
+    // }else if (!current.right){ //
+      
+    //   current.right = newNode;
+    // }else if(current.left){
+      
+    // }else{
+      
+    // }
+
+
+    // while(current){
+    //   if(current.left.val < newNode.val){
+        
+    //   }
+    // }
   }
 
   /** insertRecursively(val): Insert a new node into the BST with value val.
