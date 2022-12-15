@@ -58,18 +58,15 @@ class BinarySearchTree {
     let current = this.root;
     let newNode = new Node(val)
 
-    //If greater than root
-    // if(newNode.val > this.root.val){
-    //   newNode.left = this.root;
-    //   newNode.right = this.root.right;
-    //   this.root = newNode
-    //   console.log(this.root, "<-------- new root. New Node is greater than")
-    // }
     if(!current) this.root = newNode;
+
+    //parent 
+    //current
+
 
     while(current){
       //if current.val is less than newNode.val,
-      
+      //parent is previous node. current is constantly getting checked in while
 
       console.log(current, "<================ before current")
       let check = newNode.val < current.val;
@@ -85,26 +82,7 @@ class BinarySearchTree {
       console.log(current, "<================ current change")
     }
 
-    current = newNode;
-    console.log(current, "<================ after current")
-    return newNode
-    // if(!current.left){ 
-    //   current.left = newNode;
-    // }else if (!current.right){ //
-      
-    //   current.right = newNode;
-    // }else if(current.left){
-      
-    // }else{
-      
-    // }
-
-
-    // while(current){
-    //   if(current.left.val < newNode.val){
-        
-    //   }
-    // }
+    return newNode;
   }
 
   /** insertRecursively(val): Insert a new node into the BST with value val.
