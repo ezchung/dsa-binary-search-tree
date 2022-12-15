@@ -19,6 +19,26 @@ class Node {
 
   insertRecursively(val) {
 
+    // if val < current
+    if (val < this.val) {
+      if (!this.left) {
+        this.left = new Node(val);
+        return this.left;
+      }
+      else {
+        this.left.insertRecursively(val);
+      }
+    }
+    else if (val > this.val) {
+      if (!this.right) {
+        this.right = new Node(val);
+        return this.right;
+      }
+      else {
+        this.right.insertRecursively(val);
+      }
+    }
+
   }
 
   /** dfsPreOrder(): Traverse from the invoking node using pre-order DFS.
@@ -53,42 +73,49 @@ class BinarySearchTree {
   /** insert(val): Insert a new node into the BST with value val.
    * Returns the tree instance. Uses iteration. */
 
+  /** insert(val): Insert a new node into the BST with value val.
+ * Returns the tree. Uses iteration. */
+
   insert(val) {
-    // console.log(this, "<-------- this")
-    let current = this.root;
-    let newNode = new Node(val)
-
-    if(!current) this.root = newNode;
-
-    //parent 
-    //current
-
-
-    while(current){
-      //if current.val is less than newNode.val,
-      //parent is previous node. current is constantly getting checked in while
-
-      console.log(current, "<================ before current")
-      let check = newNode.val < current.val;
-      let result = (check) 
-                ? current.left
-                : current.right;
-      console.log(result, "<=============== result")
-      if(result === null) {
-        if(check) current.left = newNode;
-        else current.right = newNode;
-      }
-      current = result;
-      console.log(current, "<================ current change")
+    // If the tree is empty, insert at the root
+    if (this.root === null) {
+      this.root = new Node(val);
+      return this;
     }
 
-    return newNode;
+    // Otherwise, find the correct spot for the new node.
+    let current = this.root;
+    while (true) {
+      if (val < current.val) {
+        if (current.left === null) {
+          current.left = new Node(val);
+          return this;
+        } else {
+          current = current.left;
+        }
+      } else if (val > current.val) {
+        if (current.right === null) {
+          current.right = new Node(val);
+          return this;
+        } else {
+          current = current.right;
+        }
+      }
+    }
   }
 
   /** insertRecursively(val): Insert a new node into the BST with value val.
    * Returns the tree instance. Uses recursion. */
 
   insertRecursively(val) {
+
+    if (this.root === null) {
+      this.root = newNode(val);
+    } else {
+      this.root.insertRecursively(val);
+    }
+
+    return this;
 
   }
 
