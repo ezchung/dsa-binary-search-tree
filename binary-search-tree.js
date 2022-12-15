@@ -123,6 +123,24 @@ class BinarySearchTree {
    * Returns the node, if found; else undefined. Uses iteration. */
 
   find(val) {
+    let current = this.root;
+
+    // otherwise, iterate over the binary tree
+    while (current) {
+
+      if (val === current.val) {
+        break;
+      }
+
+      if (val < current.val) {
+        current = current.left;
+      }
+      else if (val > current.val) {
+        current = current.right;
+      }
+    }
+
+    return current || undefined;
 
   }
 
